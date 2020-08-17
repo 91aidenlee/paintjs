@@ -4,6 +4,7 @@ const colors = document.querySelectorAll(".jsColor");
 const range = document.querySelector("#jsRange");
 const mode = document.querySelector("#jsMode");
 const saveBtn = document.querySelector("#jsSave");
+const resetBtn = document.querySelector("#jsReset");
 
 const DEFAULT_COLOR = "#2c2c2c";
 const CANVAS_SIZE = "700";
@@ -79,6 +80,14 @@ function handleSaveClick() {
   link.click();
 }
 
+function handleResetClick() {
+  ctx.fillStyle = "#fff";
+  ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+  ctx.strokeStyle = DEFAULT_COLOR;
+  ctx.fillStyle = DEFAULT_COLOR;
+  ctx.lineWidth = 2.5;
+}
+
 if (canvas) {
   canvas.addEventListener("mousemove", onMouseMove);
   canvas.addEventListener("mousedown", startPainting);
@@ -100,4 +109,8 @@ if (mode) {
 
 if (saveBtn) {
   saveBtn.addEventListener("click", handleSaveClick);
+}
+
+if (resetBtn) {
+  resetBtn.addEventListener("click", handleResetClick);
 }
